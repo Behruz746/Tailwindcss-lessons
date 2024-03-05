@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
     <title>Acme Rockets</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/app.js" defer></script>
   </head>
   <body class="min-h-screen bg-slate-50 dark:bg-[#000] dark:text-[#fff]">
     <header class="bg-teal-700 text-[#fff] sticky top-0 z-10">
@@ -15,23 +16,54 @@
         </h1>
         <div>
           <button
-            id="mobile-open-btn"
-            class="text-3xl sm:hidden focus:outline-none"
+            id="hamburger-btn"
+            class="text-3xl md:hidden cursor-pointer relative w-8 h-8"
           >
-            &#9776;
+            <!-- &#9776; -->
+            <div
+              class="bg-[#fff] w-8 h-1 transition-all duration-500 rounded absolute top-4 -mt-0.5 before:content-[''] before:bg-[#fff] before:w-8 before:h-1 before:rounded before:absolute before:transition-all before:-translate-x-4 before:duration-500 before:-translate-y-3 after:content-[''] after:bg-[#fff] after:w-8 after:h-1 after:rounded after:absolute after:transition-all after:duration-500 after:translate-y-3 after:-translate-x-4"
+            ></div>
           </button>
-          <nav class="hidden sm:block space-x-8 text-xl" aria-label="main">
+          <nav class="hidden md:block space-x-8 text-xl" aria-label="main">
             <a href="#rockets" class="hover:underline">Our Rockets</a>
             <a href="#testimonials" class="hover:underline">Testimon</a>
             <a href="#contact" class="hover:underline">Contact Us</a>
           </nav>
         </div>
       </section>
+      <section
+        id="mobile-menu"
+        class="absolute top-68 bg-[#000] w-full text-5xl hidden flex-col justify-center origin-top animate-open-menu"
+      >
+        <!-- <button class="text-8xl self-end px-6">&times;</button> -->
+        <nav
+          class="flex flex-col min-h-screen items-center py-8"
+          aria-label="mobile"
+        >
+          <a href="#hero" class="w-full py-6 text-center hover:opacity-90"
+            >Home</a
+          >
+          <a href="#rockets" class="w-full py-6 text-center hover:opacity-90"
+            >Our Rockets</a
+          >
+          <a
+            href="#testimonials"
+            class="w-full py-6 text-center hover:opacity-90"
+            >Testimonials</a
+          >
+          <a href="#contact" class="w-full py-6 text-center hover:opacity-90"
+            >Contact Us</a
+          >
+          <a href="#footer" class="w-full py-6 text-center hover:opacity-90"
+            >Legal</a
+          >
+        </nav>
+      </section>
     </header>
     <main class="max-w-4xl mx-auto">
       <section
         id="hero"
-        class="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12 scroll-mt-40"
+        class="flex flex-col-reverse justify-center sm:flex-row p-6 items-center gap-8 mb-12 scroll-mt-40 widescreen:section-min-height tallscreen:section-min-height"
       >
         <article class="sm:w-1/2">
           <h2
@@ -58,7 +90,10 @@
         <img src="./images/rocketdab.webp" class="w-1/2" alt="Rocket Dab" />
       </section>
       <hr class="mx-auto bg-[#000] dark:bg-[#fff]" />
-      <section id="rockets" class="p-6 my-12 scroll-mt-20">
+      <section
+        id="rockets"
+        class="p-6 my-12 scroll-mt-20 widescreen:section-min-height tallscreen:section-min-height"
+      >
         <h2
           class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-[#fff]"
         >
@@ -136,7 +171,10 @@
         </ul>
       </section>
       <hr class="mx-auto bg-[#000] dark:bg-[#fff]" />
-      <section id="testimonials" class="p-6 my-12 scroll-mt-20">
+      <section
+        id="testimonials"
+        class="p-6 my-12 scroll-mt-20 widescreen:section-min-height tallscreen:section-min-height"
+      >
         <h2
           class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-[#fff]"
         >
@@ -203,13 +241,84 @@
         </figure>
       </section>
       <hr class="mx-auto bg-[#000] dark:bg-[#fff]" />
-      <section id="contact" class="p-6 my-12 scroll-mt-20">
+      <section
+        id="contact"
+        class="p-6 my-12 scroll-mt-20 widescreen:section-min-height tallscreen:section-min-height"
+      >
         <h2
           class="text-4xl font-bold text-center sm:text-5xl mb-6 text-slate-900 dark:text-[#fff]"
         >
           Contact Us
         </h2>
+
+        <form
+          action="#"
+          class="max-w-4xl mx-auto text-2xl sm:text-3xl flex flex-col items-left gap-4"
+        >
+          <label for="subject">Subject:</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            required
+            minlength="3"
+            maxlength="60"
+            placeholder="Your subject"
+            class="w-full text-[#000] placeholder:text-2xl sm:placeholder:text-3xl text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none outline-none"
+          />
+          <label for="message">Message:</label>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Your Message"
+            required
+            class="w-full text-[#000] text-2xl sm:text-3xl p-3 rounded-xl border border-solid border-slate-900 dark:border-none outline-none resize-none"
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-teal-700 hover:bg-teal-600 active:bg-teal-500 text-[#fff] p-3 w-48 rounded-xl border border-solid border-slate-900 dark:border-none"
+          >
+            Submit
+          </button>
+        </form>
       </section>
     </main>
+
+    <footer id="footer" class="bg-teal-700 text-[#fff] text-xl">
+      <section
+        class="max-w-4xl mx-auto p-4 flex flex-col sm:flex-row sm:justify-between"
+      >
+        <address>
+          <h2>Acme Rocket-Powered Products, Inc.</h2>
+          555 Astro Way<br />
+          Fairfield, New Jersey 12345-5555<br />
+          Email:
+          <a href="mailto:inquiries@acmerockets.com">Inquires@AcmeRockets.com</a
+          ><br />
+          Phone: <a href="tel:+15555555555">(555) 555-5555</a>
+        </address>
+        <nav class="hidden md:flex flex-col gap-2" aria-label="footer">
+          <a href="#rockets" class="hover:opacity-90 hover:underline"
+            >Our Rockets</a
+          >
+          <a href="#testimonials" class="hover:opacity-90 hover:underline"
+            >Testimonials</a
+          >
+          <a href="#contact" class="hover:opacity-90 hover:underline"
+            >Contact Us</a
+          >
+        </nav>
+        <div class="flex flex-col sm:gap-9">
+          <p class="text-right">
+            Coprright &copy;
+
+            <span id="year">2024</span>
+          </p>
+          <p class="text-right">All Rights Reserved</p>
+        </div>
+      </section>
+    </footer>
   </body>
 </html>
